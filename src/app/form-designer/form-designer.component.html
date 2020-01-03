@@ -1,0 +1,187 @@
+<nz-layout class="left-layout" [ngClass]="{'resize':isMouseDown}" (mousemove)="mouseMove($event)"
+  (mouseup)="mouseUp($event)">
+  <nz-sider class="sider" nzTheme="light" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="0"
+    [nzZeroTrigger]="zeroTrigger" [nzWidth]="siderWidth+'px'">
+    <ul class="control-list" nz-menu [nzTheme]="'light'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+      <li *ngFor="let item of nzControls" nz-submenu>
+        <span title><i nz-icon type="user"></i><span class="nav-text">{{item.group}}</span></span>
+        <ul>
+          <li *ngFor="let control of item.controls" nz-popover nzPlacement="right" nzTitle="控件示例："
+            [nzContent]="popTemplate" nz-menu-item nzTrigger="click" (click)="controlClick(control)">{{control}}</li>
+        </ul>
+      </li>
+    </ul>
+    <div *ngIf="!isCollapsed" class="sider-title">控件</div>
+  </nz-sider>
+  <div class="list-dragger" (mousedown)="mouseDown($event)"></div>
+  <nz-layout class="right-layout">
+    <nz-header style="background: #fff; padding-left:10px;font-size: large;">设计器</nz-header>
+    <nz-content>
+      <nz-breadcrumb>
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div>
+        Bill is a cat.
+      </div>
+    </nz-content>
+    <nz-footer style="text-align: center;">Elegant Designer ©2019 Implement By Angular</nz-footer>
+  </nz-layout>
+</nz-layout>
+<ng-template #zeroTrigger>
+  <i class="sider-button" [ngClass]="{'opened': !isCollapsed,'closed': isCollapsed}" nz-icon nzType="right"
+    nzTheme="outline"></i>
+</ng-template>
+<!-- <app-pop-content class="pop-content" [style.top.px]="topPosition" [style.left.px]="siderWidth" *ngIf="clicked"></app-pop-content> -->
+<ng-template #popTemplate>
+  <div [ngSwitch]="selectControl">
+    <img *ngSwitchCase="'Layout布局'" class="pop-layout" src="..\..\assets\layout.png">
+
+    <div *ngSwitchCase="'Grid栅格'">
+      <div nz-row>
+        <div nz-col nzSpan="12">col-12</div>
+        <div nz-col nzSpan="12">col-12</div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="8">col-8</div>
+        <div nz-col nzSpan="8">col-8</div>
+        <div nz-col nzSpan="8">col-8</div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6">col-6</div>
+        <div nz-col nzSpan="6">col-6</div>
+        <div nz-col nzSpan="6">col-6</div>
+        <div nz-col nzSpan="6">col-6</div>
+      </div>
+    </div>
+
+    <label *ngSwitchCase="'Checkbox多选框'" nz-checkbox>checkbox</label>
+    <button *ngSwitchCase="'Button按钮'" nz-button>按钮</button>
+
+    <div *ngSwitchCase="'Icon图标'">
+      <i nz-icon class="pop-icon" nzType="clock-circle" nzTheme="outline"></i>
+      <i nz-icon class="pop-icon" nzType="question-circle" nzTheme="outline"></i>
+      <i nz-icon class="pop-icon" nzType="close-circle" nzTheme="outline"></i>
+      <i nz-icon class="pop-icon" nzType="bar-chart" nzTheme="outline"></i>
+      <i nz-icon class="pop-icon" nzType="edit" nzTheme="outline"></i>
+    </div>
+
+    <div class="scrollable-container" #target *ngSwitchCase="'Affix固钉'">
+      <div class="background">
+        <nz-affix [nzTarget]="target" id="affix-container-target">
+          <button nz-button [nzType]="'primary'">
+            <span>固钉</span>
+          </button>
+        </nz-affix>
+      </div>
+    </div>
+
+    <nz-breadcrumb *ngSwitchCase="'Breadcrumb面包屑'">
+      <nz-breadcrumb-item>
+        Home
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a>Application List</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        An Application
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+
+    <nz-dropdown *ngSwitchCase="'Dropdown下拉菜单'">
+      <a nz-dropdown> Hover me <i nz-icon type="down"></i> </a>
+      <ul nz-menu>
+        <li nz-menu-item>
+          <a>菜单项1</a>
+        </li>
+        <li nz-menu-item>
+          <a>菜单项2</a>
+        </li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item nzDisabled>菜单项3（disabled）</li>
+      </ul>
+    </nz-dropdown>
+
+    <ul *ngSwitchCase="'Menu导航菜单'" class="pop-menu" nz-menu [nzMode]="'inline'" style="width: 240px;">
+      <li nz-submenu>
+        <span title><i nz-icon type="mail"></i> Navigation One</span>
+        <ul>
+          <li nz-menu-group>
+            <span title>Item 1</span>
+            <ul>
+              <li nz-menu-item>Option 1</li>
+              <li nz-menu-item>Option 2</li>
+            </ul>
+          </li>
+          <li nz-menu-group>
+            <span title>Item 2</span>
+            <ul>
+              <li nz-menu-item>Option 3</li>
+              <li nz-menu-item>Option 4</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i nz-icon type="appstore"></i> Navigation Two</span>
+        <ul>
+          <li nz-menu-item>Option 5</li>
+          <li nz-menu-item>Option 6</li>
+          <li nz-submenu>
+            <span title>Submenu</span>
+            <ul>
+              <li nz-menu-item>Option 7</li>
+              <li nz-menu-item>Option 8</li>
+              <li nz-submenu>
+                <span title>Submenu</span>
+                <ul>
+                  <li nz-menu-item>Option 9</li>
+                  <li nz-menu-item>Option 10</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <nz-page-header *ngSwitchCase="'PageHeader页头'" nzBackIcon nzTitle="Title"
+      nzSubtitle="This is a subtitle"> </nz-page-header>
+
+    <nz-pagination *ngSwitchCase="'Pagination分页'" [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
+
+    <nz-steps *ngSwitchCase="'Steps步骤条'" nzCurrent="2" nzSize="small">
+      <nz-step nzTitle="Finished"></nz-step>
+      <nz-step nzTitle="In Progress"></nz-step>
+      <nz-step nzTitle="Waiting"></nz-step>
+    </nz-steps>
+
+    <div *ngSwitchCase="'Avatar头像'">
+      <nz-avatar class="pop-avatar" nzIcon="user"></nz-avatar>
+      <nz-avatar class="pop-avatar" nzText="U"></nz-avatar>
+      <nz-avatar class="pop-avatar" nzText="USER"></nz-avatar>
+      <nz-avatar class="pop-avatar" nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+      </nz-avatar>
+      <nz-badge class="pop-avatar" nzDot>
+        <nz-avatar nzText="U" style="color:#f56a00; background-color:#fde3cf;"></nz-avatar>
+      </nz-badge>
+      <nz-badge class="pop-avatar" [nzCount]="5">
+        <nz-avatar nzIcon="user" style="background-color:#87d068;"></nz-avatar>
+      </nz-badge>
+    </div>
+
+    <div *ngSwitchCase="'Badge徽标数'">
+      <nz-badge class="pop-badge" [nzCount]="25"></nz-badge>
+      <nz-badge class="pop-badge" [nzCount]="4"
+        [nzStyle]="{ backgroundColor: '#fff', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset' }"></nz-badge>
+      <nz-badge class="pop-badge" [nzCount]="109" [nzStyle]="{ backgroundColor: '#52c41a' }"></nz-badge>
+      <nz-badge class="pop-badge" nzStatus="success"></nz-badge>
+      <nz-badge class="pop-badge" nzStatus="error"></nz-badge>
+      <nz-badge class="pop-badge" nzStatus="default"></nz-badge>
+      <nz-badge class="pop-badge" nzStatus="processing"></nz-badge>
+      <nz-badge class="pop-badge" nzStatus="warning"></nz-badge>
+    </div>
+
+    <div *ngSwitchDefault>无</div>
+  </div>
+</ng-template>

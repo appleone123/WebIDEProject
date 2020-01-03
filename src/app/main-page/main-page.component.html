@@ -1,0 +1,45 @@
+<!-- NG-ZORRO -->
+<button nz-button (click)="createForm()">创建表单</button>
+<nz-modal [(nzVisible)]="createDialogVisibility" nzTitle="创建向导" (nzOnCancel)="createCancel()" (nzOnOk)="createConfirm()"
+  [nzOkLoading]="isCreating">
+  <ng-container class="formGuideContainer" nzTheme="light">
+    <nz-layout class="left-layout" nzTheme="light">
+      <nz-sider class="left-sider"  nzTheme="light" >
+        <div class="logo"></div>
+        <ul class="typeOfForms" 
+        nz-menu nzTheme="light" 
+        nzSelectable="true" nzMode="inline">
+          <li nz-menu-item [nzSelected]="selectedFormType=='Card'" (click)="selectChanged($event,'Card')">
+            <i nz-icon nzType="form"></i>
+            <span>卡片</span>
+          </li>
+          <li nz-menu-item [nzSelected]="selectedFormType=='List'" (click)="selectChanged($event,'List')">
+            <i nz-icon nzType="form"></i>
+            <span>列表</span>
+          </li>
+          <li nz-menu-item [nzSelected]="selectedFormType=='ListCard'" (click)="selectChanged($event,'ListCard')">
+            <i nz-icon nzType="form"></i>
+            <span>列卡</span>
+          </li>
+        </ul>
+      </nz-sider>
+      <nz-divider style="height: auto;margin-top: 5px;margin-bottom: 5px;" nzType="vertical"></nz-divider>
+      <nz-layout class="right-layout">
+        <form nz-form [formGroup]="formInfo">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="code">编号</nz-form-label>
+            <nz-form-control [nzSpan]="18">
+              <input nz-input name="code" formControlName="formCode" type="text" id="code">
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="6" nzFor="name">名称</nz-form-label>
+            <nz-form-control [nzSpan]="18">
+              <input nz-input name="name" formControlName="formName" type="text" id="name">
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </nz-layout>
+    </nz-layout>
+  </ng-container>
+</nz-modal>

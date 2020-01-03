@@ -1,0 +1,19 @@
+.right-layout{
+    margin-left: 2px;
+    background-color: white;
+}
+.left-layout{
+    background-color: white;
+}
+.typeOfForms{
+    border-style: none;
+}
+.left-sider{
+    flex:0 0 100px !important;
+    min-width: 100px !important;
+    width: 100px !important;
+    max-width: 100px !important;
+}
+nz-form-item{
+    margin-bottom: 5px;
+}

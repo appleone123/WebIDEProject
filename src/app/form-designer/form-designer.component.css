@@ -1,0 +1,169 @@
+/* ::ng-deep body{
+    overflow: hidden;
+} */
+
+.left-layout {
+    height: 100%;
+}
+
+.pop-icon {
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+}
+
+.left-layout.resize {
+    cursor: ew-resize;
+}
+
+::ng-deep .ant-popover-buttons {
+    display: none;
+}
+
+.list-dragger {
+    height: 100%;
+    border-right: 1px solid #e8e8e8;
+    cursor: ew-resize;
+    display: inline-block;
+    width: 0.1px;
+}
+
+.control-list {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 30px;
+}
+
+.sider-title {
+    background-color: white;
+    top: 0px;
+    padding-top: 5px;
+    padding-left: 20px;
+    position: absolute;
+    font-size: medium;
+    font-weight: bold;
+    width: 91%;
+}
+
+::ng-deep .ant-layout-sider-zero-width-trigger.ng-star-inserted {
+    position: absolute !important;
+    bottom: 20px !important;
+    top: auto;
+    right: -36px;
+    width: 36px;
+    height: 42px;
+    color: #718599;
+    font-size: 18px;
+    line-height: 42px;
+    text-align: center;
+    background: #fff;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.sider-button {
+    /* padding-right: 6px; */
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* .sider-button::before{
+    padding-right: 6px;
+    transition: width 10s cubic-bezier(0.645, 0.045, 0.355, 1);
+} */
+
+/* .sider-button::before{
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid #656565;
+    transform: rotateZ(-45deg);
+} */
+
+.sider-button.closed {
+    /* content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid #656565; */
+    transform: rotateZ(0deg);
+}
+
+/* .sider-button:hover::before{
+    width: 20px;
+    transform: rotateZ(-deg);
+} */
+
+.sider-button.opened {
+    /* width: 20px; */
+    transform: rotateZ(-180deg);
+}
+
+.scrollable-container {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.background {
+    padding-top: 60px;
+    height: 300px;
+    background-image: url(//zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg);
+}
+
+::ng-deep .ant-popover-inner-content {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+::ng-deep .ant-row{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+::ng-deep .ant-col-12:nth-child(odd) {
+    background-color: skyblue;
+}
+
+::ng-deep .ant-col-12:nth-child(even) {
+    background-color: lightblue;
+}
+
+::ng-deep .ant-col-8:nth-child(odd) {
+    background-color: lightblue;
+}
+
+::ng-deep .ant-col-8:nth-child(even) {
+    background-color: skyblue;
+}
+
+::ng-deep .ant-col-6:nth-child(odd) {
+    background-color: skyblue;
+}
+
+::ng-deep .ant-col-6:nth-child(even) {
+    background-color: lightblue;
+}
+
+::ng-deep .ant-col-12 {
+    text-align: center;
+}
+
+::ng-deep .ant-col-8 {
+    text-align: center;
+}
+
+::ng-deep .ant-col-6 {
+    text-align: center;
+}
+.pop-layout{
+    width: 300px;
+}
+.pop-avatar{
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+}
+.pop-badge{
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+}
