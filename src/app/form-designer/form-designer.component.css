@@ -116,54 +116,85 @@
     overflow-x: hidden;
 }
 
-::ng-deep .ant-row{
+::ng-deep .ant-row {
     margin-top: 2px;
     margin-bottom: 2px;
 }
 
-::ng-deep .ant-col-12:nth-child(odd) {
+::ng-deep .popGrid.ant-col-12:nth-child(odd) {
     background-color: skyblue;
 }
 
-::ng-deep .ant-col-12:nth-child(even) {
+::ng-deep .popGrid.ant-col-12:nth-child(even) {
     background-color: lightblue;
 }
 
-::ng-deep .ant-col-8:nth-child(odd) {
+::ng-deep .popGrid.ant-col-8:nth-child(odd) {
     background-color: lightblue;
 }
 
-::ng-deep .ant-col-8:nth-child(even) {
+::ng-deep .popGrid.ant-col-8:nth-child(even) {
     background-color: skyblue;
 }
 
-::ng-deep .ant-col-6:nth-child(odd) {
+::ng-deep .popGrid.ant-col-6:nth-child(odd) {
     background-color: skyblue;
 }
 
-::ng-deep .ant-col-6:nth-child(even) {
+::ng-deep .popGrid.ant-col-6:nth-child(even) {
     background-color: lightblue;
 }
 
-::ng-deep .ant-col-12 {
+::ng-deep .popGrid.ant-col-12 {
     text-align: center;
 }
 
-::ng-deep .ant-col-8 {
+::ng-deep .popGrid.ant-col-8 {
     text-align: center;
 }
 
-::ng-deep .ant-col-6 {
+::ng-deep .popGrid.ant-col-6 {
     text-align: center;
 }
-.pop-layout{
+
+.pop-layout {
     width: 300px;
 }
-.pop-avatar{
+
+.pop-avatar {
     margin-inline-start: 2px;
     margin-inline-end: 2px;
 }
-.pop-badge{
+
+.pop-badge {
     margin-inline-start: 2px;
     margin-inline-end: 2px;
+}
+
+[nz-carousel-content] {
+    text-align: center;
+    height: 160px;
+    line-height: 160px;
+    background: #364d79;
+    color: #fff;
+    overflow: hidden;
+}
+.popAlert{
+    margin-bottom: 4px;
+}
+.popNotification{
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+}
+.popMessage{
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+}
+.popSpin{
+    display: inline-block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+}
+.tabSet{
+    height: 100%;
 }

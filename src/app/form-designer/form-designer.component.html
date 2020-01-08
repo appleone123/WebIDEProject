@@ -6,7 +6,7 @@
       <li *ngFor="let item of nzControls" nz-submenu>
         <span title><i nz-icon type="user"></i><span class="nav-text">{{item.group}}</span></span>
         <ul>
-          <li *ngFor="let control of item.controls" nz-popover nzPlacement="right" nzTitle="控件示例："
+          <li *ngFor="let control of item.controls" nz-popover nzPlacement="rightBottom" nzTitle="控件示例："
             [nzContent]="popTemplate" nz-menu-item nzTrigger="click" (click)="controlClick(control)">{{control}}</li>
         </ul>
       </li>
@@ -17,13 +17,20 @@
   <nz-layout class="right-layout">
     <nz-header style="background: #fff; padding-left:10px;font-size: large;">设计器</nz-header>
     <nz-content>
-      <nz-breadcrumb>
-        <nz-breadcrumb-item>User</nz-breadcrumb-item>
-        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
-      </nz-breadcrumb>
-      <div>
-        Bill is a cat.
-      </div>
+      <nz-tabset class="tabSet" nzSize="small">
+        <nz-tab nzTitle="界面">
+          Content of Tab Pane 1
+        </nz-tab>
+        <nz-tab nzTitle="代码">
+          <app-code-page></app-code-page>
+        </nz-tab>
+        <nz-tab nzTitle="样式">
+          Content of Tab Pane 3
+        </nz-tab>
+        <nz-tab nzTitle="服务">
+          Content of Tab Pane 4
+        </nz-tab>
+      </nz-tabset>
     </nz-content>
     <nz-footer style="text-align: center;">Elegant Designer ©2019 Implement By Angular</nz-footer>
   </nz-layout>
@@ -33,25 +40,27 @@
     nzTheme="outline"></i>
 </ng-template>
 <!-- <app-pop-content class="pop-content" [style.top.px]="topPosition" [style.left.px]="siderWidth" *ngIf="clicked"></app-pop-content> -->
+
+<!--列表控件弹出示例模板-->
 <ng-template #popTemplate>
   <div [ngSwitch]="selectControl">
     <img *ngSwitchCase="'Layout布局'" class="pop-layout" src="..\..\assets\layout.png">
 
     <div *ngSwitchCase="'Grid栅格'">
       <div nz-row>
-        <div nz-col nzSpan="12">col-12</div>
-        <div nz-col nzSpan="12">col-12</div>
+        <div class="popGrid" nz-col nzSpan="12">col-12</div>
+        <div class="popGrid" nz-col nzSpan="12">col-12</div>
       </div>
       <div nz-row>
-        <div nz-col nzSpan="8">col-8</div>
-        <div nz-col nzSpan="8">col-8</div>
-        <div nz-col nzSpan="8">col-8</div>
+        <div class="popGrid" nz-col nzSpan="8">col-8</div>
+        <div class="popGrid" nz-col nzSpan="8">col-8</div>
+        <div class="popGrid" nz-col nzSpan="8">col-8</div>
       </div>
       <div nz-row>
-        <div nz-col nzSpan="6">col-6</div>
-        <div nz-col nzSpan="6">col-6</div>
-        <div nz-col nzSpan="6">col-6</div>
-        <div nz-col nzSpan="6">col-6</div>
+        <div class="popGrid" nz-col nzSpan="6">col-6</div>
+        <div class="popGrid" nz-col nzSpan="6">col-6</div>
+        <div class="popGrid" nz-col nzSpan="6">col-6</div>
+        <div class="popGrid" nz-col nzSpan="6">col-6</div>
       </div>
     </div>
 
@@ -145,8 +154,8 @@
       </li>
     </ul>
 
-    <nz-page-header *ngSwitchCase="'PageHeader页头'" nzBackIcon nzTitle="Title"
-      nzSubtitle="This is a subtitle"> </nz-page-header>
+    <nz-page-header *ngSwitchCase="'PageHeader页头'" nzBackIcon nzTitle="Title" nzSubtitle="This is a subtitle">
+    </nz-page-header>
 
     <nz-pagination *ngSwitchCase="'Pagination分页'" [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
 
@@ -180,6 +189,240 @@
       <nz-badge class="pop-badge" nzStatus="default"></nz-badge>
       <nz-badge class="pop-badge" nzStatus="processing"></nz-badge>
       <nz-badge class="pop-badge" nzStatus="warning"></nz-badge>
+    </div>
+
+    <div *ngSwitchCase="'Calendar日历'" [ngStyle]="{ width: '300px', border: '1px solid #d9d9d9', borderRadius: '4px' }">
+      <nz-calendar [nzFullscreen]="false"></nz-calendar>
+    </div>
+
+    <div *ngSwitchCase="'Card卡片'">
+      <nz-card style="width:200px;" nzTitle="Card title" [nzExtra]="extraTemplate">
+        <p>Card content</p>
+        <p>Card content</p>
+        <p>Card content</p>
+      </nz-card>
+      <ng-template #extraTemplate>
+        <a>More</a>
+      </ng-template>
+    </div>
+
+    <nz-carousel *ngSwitchCase="'Carousel走马灯'" [nzEffect]="effect">
+      <div nz-carousel-content class="popCarousel" *ngFor="let index of popCarouselSampleArray">
+        <h3>{{index}}</h3>
+      </div>
+    </nz-carousel>
+
+    <nz-collapse *ngSwitchCase="'Collapse折叠面板'">
+      <nz-collapse-panel [nzHeader]="'panel header 1'" [nzActive]="'true'" [nzDisabled]="'false'">
+        <p style="margin:0;">
+          A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
+          guest in many households across the world.
+        </p>
+      </nz-collapse-panel>
+      <nz-collapse-panel [nzHeader]="'panel header 2'" [nzActive]="'true'" [nzDisabled]="'false'">
+        <p style="margin:0;">
+          A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
+          guest in many households across the world.
+        </p>
+      </nz-collapse-panel>
+      <nz-collapse-panel [nzHeader]="'panel header 3'" [nzActive]="'false'" [nzDisabled]="'true'">
+        <p style="margin:0;">
+          A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome
+          guest in many households across the world.
+        </p>
+      </nz-collapse-panel>
+    </nz-collapse>
+
+    <div *ngSwitchCase="'Comment评论'" style="width: 400px;">
+      <nz-comment nzAuthor="Han Solo" [nzDatetime]="time">
+        <nz-avatar nz-comment-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png">
+        </nz-avatar>
+        <nz-comment-content>
+          <p>
+            We supply a series of design principles, practical patterns and high quality design resources (Sketch and
+            Axure), to help people create their product prototypes beautifully and efficiently.
+          </p>
+        </nz-comment-content>
+        <nz-comment-action>
+          <i nz-tooltip nzTitle="Like" nz-icon type="like" [theme]="'twotone'"></i>
+          <span class="count like">1</span>
+        </nz-comment-action>
+        <nz-comment-action>
+          <i nz-tooltip nzTitle="Dislike" nz-icon type="dislike" [theme]="'outline'"></i>
+          <span class="count dislike">0</span>
+        </nz-comment-action>
+        <nz-comment-action>Reply to</nz-comment-action>
+      </nz-comment>
+    </div>
+
+    <nz-descriptions *ngSwitchCase="'Descriptions描述列表'" nzTitle="User Info">
+      <nz-descriptions-item nzTitle="UserName">ErGou</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Telephone">13799999999</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Live">Moon, Solar System</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Remark">Remark</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Address">
+        No. 18 MoonBase,Moon Solar System
+      </nz-descriptions-item>
+    </nz-descriptions>
+
+    <nz-empty *ngSwitchCase="'Empty空状态'"></nz-empty>
+
+    <nz-list *ngSwitchCase="'List列表'" [nzDataSource]="popListSampleData" nzBordered nzSize="small" [nzHeader]="'Header'"
+      [nzFooter]="'Footer'" [nzRenderItem]="item">
+      <ng-template #item let-item>
+        <nz-list-item [nzContent]="item"></nz-list-item>
+      </ng-template>
+    </nz-list>
+
+    <button *ngSwitchCase="'Popover气泡卡片'" nz-button nz-popover nzType="primary" nzTitle="Title" nzContent="Content">
+      悬停以显示气泡卡片
+    </button>
+
+    <div *ngSwitchCase="'Statistic统计'" style="width: 300px;">
+      <nz-row [nzGutter]="16">
+        <nz-col [nzSpan]="12">
+          <nz-statistic [nzValue]="1949101 | number" [nzTitle]="'Active Users'"></nz-statistic>
+        </nz-col>
+        <nz-col [nzSpan]="12">
+          <nz-statistic [nzValue]="2019.111 | number: '1.0-2'" [nzTitle]="'Account Balance (CNY)'"></nz-statistic>
+        </nz-col>
+      </nz-row>
+    </div>
+
+    <img *ngSwitchCase="'Table表格'" style="width: 400px;" src="../../assets/popTable.png" alt="">
+
+    <nz-tabset *ngSwitchCase="'Tabs标签页'">
+      <nz-tab nzTitle="Tab 1">
+        Content of Tab Pane 1
+      </nz-tab>
+      <nz-tab nzTitle="Tab 2">
+        Content of Tab Pane 2
+      </nz-tab>
+      <nz-tab nzTitle="Tab 3">
+        Content of Tab Pane 3
+      </nz-tab>
+    </nz-tabset>
+
+    <div *ngSwitchCase="'Tag标签'">
+      <nz-tag>Tag 1</nz-tag>
+      <nz-tag>
+        <a href="">Link</a>
+      </nz-tag>
+      <nz-tag nzMode="closeable">closeable Tag 2</nz-tag>
+      <nz-tag nzMode="closeable" [nzColor]="'red'">red Tag 3</nz-tag>
+      <nz-tag nzMode="closeable" [nzColor]="'#2db7f5'">#2db7f5 Tag 4</nz-tag>
+      <nz-tag nzMode="checkable" [nzChecked]="true">checkable Tag 5</nz-tag>
+    </div>
+
+    <nz-timeline *ngSwitchCase="'Timeline时间轴'">
+      <nz-timeline-item>event1 2019-09-01</nz-timeline-item>
+      <nz-timeline-item>event2 2019-10-01</nz-timeline-item>
+      <nz-timeline-item>event3 2019-11-01</nz-timeline-item>
+      <nz-timeline-item>event4 2019-12-01</nz-timeline-item>
+    </nz-timeline>
+
+    <button *ngSwitchCase="'Tooltip文字提示'" nz-button nzTitle="text" nzPlacement="top" nz-tooltip>
+      悬停以显示tooltip
+    </button>
+
+    <img *ngSwitchCase="'Tree树形控件'" style="width: 400px;" src="../../assets/popTree.png" alt="">
+
+    <div *ngSwitchCase="'Alert警告'">
+      <nz-alert class="popAlert" nzType="success" nzMessage="Success Text"></nz-alert>
+      <nz-alert class="popAlert" nzType="success" nzBanner="true" nzMessage="Success Text"></nz-alert>
+      <nz-alert class="popAlert" nzType="info" nzDescription="Descriptions" nzMessage="Info Text"></nz-alert>
+      <nz-alert class="popAlert" nzType="warning" nzCloseable nzMessage="Warning Text"></nz-alert>
+      <nz-alert class="popAlert" nzType="error" nzShowIcon nzMessage="Error Text"></nz-alert>
+    </div>
+
+    <div *ngSwitchCase="'Drawer抽屉'">
+      <button nz-button nzType="primary" (click)="openPopDrawer()">Open</button>
+      <nz-drawer [nzClosable]="false" [nzVisible]="popDrawerVisible" nzPlacement="right" nzTitle="Drawer"
+        (nzOnClose)="openPopDrawer()">
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </nz-drawer>
+    </div>
+
+    <div *ngSwitchCase="'Message全局提示'">
+      <button nz-button class="popMessage" (click)="createMessage('success')">Success</button>
+      <button nz-button class="popMessage" (click)="createMessage('error')">Error</button>
+      <button nz-button class="popMessage" (click)="createMessage('warning')">Warning</button>
+    </div>
+
+    <div *ngSwitchCase="'Modal对话框'">
+      <button nz-button [nzType]="'primary'" (click)="controlModal()"><span>Show Modal</span></button>
+      <nz-modal [(nzVisible)]="popModalVisible" nzTitle="this is Modal" (nzOnCancel)="controlModal()"
+        (nzOnOk)="controlModal()">
+        <p>Content one</p>
+        <p>Content two</p>
+        <p>Content three</p>
+      </nz-modal>
+    </div>
+
+    <div *ngSwitchCase="'Notification通知提醒框'">
+      <button nz-button class="popNotification" (click)="createPopNotification('success')">Success</button>
+      <button nz-button class="popNotification" (click)="createPopNotification('info')">Info</button>
+      <button nz-button class="popNotification" (click)="createPopNotification('warning')">Warning</button>
+      <button nz-button class="popNotification" (click)="createPopNotification('error')">Error</button>
+    </div>
+
+    <div *ngSwitchCase="'Popconfirm气泡确认框'">
+      <a nz-popconfirm nzTitle="Are you sure?" [nzIcon]="iconTpl">Delete</a>
+      <ng-template #iconTpl>
+        <i nz-icon nzType="question-circle-o" style="color: red;"></i>
+      </ng-template>
+    </div>
+
+    <div *ngSwitchCase="'Progress进度条'" style="width: 170px;">
+      <nz-progress [nzPercent]="30" nzSize="small"></nz-progress>
+      <nz-progress [nzPercent]="50" nzSize="small" nzStatus="active"></nz-progress>
+      <nz-progress [nzPercent]="70" nzSize="small" nzStatus="exception"></nz-progress>
+      <nz-progress [nzPercent]="100" nzSize="small"></nz-progress>
+      <nz-progress [nzPercent]="50" nzSize="small" [nzShowInfo]="false"></nz-progress>
+      <nz-progress [nzPercent]="75" nzType="circle" [nzWidth]="80"></nz-progress>
+      <nz-progress [nzPercent]="70" nzType="circle" [nzWidth]="80" nzStatus="exception"></nz-progress>
+      <nz-progress [nzPercent]="100" nzType="circle" [nzWidth]="80"></nz-progress>
+      <nz-progress nzStrokeLinecap="square" nzType="dashboard" [nzWidth]="80" nzPercent="75"></nz-progress>
+    </div>
+
+    <nz-skeleton *ngSwitchCase="'Skeleton加载占位图'" [nzAvatar]="true" [nzParagraph]="{ rows: 4 }"></nz-skeleton>
+
+    <div *ngSwitchCase="'Spin加载中'">
+      <nz-spin class="popSpin" nzSimple [nzSize]="'small'"></nz-spin>
+      <nz-spin class="popSpin" nzSimple></nz-spin>
+      <nz-spin class="popSpin" nzSimple [nzSize]="'large'"></nz-spin>
+      <ng-template #indicatorTemplate><i nz-icon type="loading" style="font-size: 24px;"></i> </ng-template>
+      <nz-spin class="popSpin" nzSimple [nzIndicator]="indicatorTemplate"> </nz-spin>
+    </div>
+
+    <div *ngSwitchCase="'Divider分割线'">
+      Text
+      <nz-divider nzType="vertical"></nz-divider>
+      <a href="#">Link</a>
+      <nz-divider nzType="vertical"></nz-divider>
+      <a href="#">Link</a>
+      <nz-divider></nz-divider>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae
+        sunt a te dicta? Refert tamen, quo modo.
+      </p>
+      <nz-divider nzText="With Text"></nz-divider>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae
+        sunt a te dicta? Refert tamen, quo modo.
+      </p>
+      <nz-divider nzText="Left Text" nzOrientation="left"></nz-divider>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae
+        sunt a te dicta? Refert tamen, quo modo.
+      </p>
+      <nz-divider nzText="Right Text" nzOrientation="right"></nz-divider>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne merninisti licere mihi ista probare, quae
+        sunt a te dicta? Refert tamen, quo modo.
+      </p>
     </div>
 
     <div *ngSwitchDefault>无</div>

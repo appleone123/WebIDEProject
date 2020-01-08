@@ -13,6 +13,8 @@ import { FormDesignerComponent } from './form-designer/form-designer.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { PopControlDirective } from './pop-control.directive';
 import { PopContentComponent } from './pop-content/pop-content.component';
+import { CodePageComponent } from './code-page/code-page.component';
+import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 
 registerLocaleData(zh);
 
@@ -22,7 +24,8 @@ registerLocaleData(zh);
     FormDesignerComponent,
     MainPageComponent,
     PopControlDirective,
-    PopContentComponent
+    PopContentComponent,
+    CodePageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ registerLocaleData(zh);
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    MonacoEditorModule
   ],
   entryComponents: [NzCheckboxComponent, PopContentComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],

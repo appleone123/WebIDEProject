@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone, TemplateRef, ViewContainerRef, ElementRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
-import { NzCheckboxModule, NzCheckboxComponent, NzPopconfirmDirective } from 'ng-zorro-antd';
+import { NzCheckboxModule, NzCheckboxComponent, NzPopconfirmDirective, NzMessageService, NzNotificationService } from 'ng-zorro-antd';
 import { PopControlDirective } from '../pop-control.directive';
 import { PopContentComponent } from '../pop-content/pop-content.component';
 @Component({
@@ -18,8 +18,21 @@ export class FormDesignerComponent implements OnInit {
   clicked = false;
   topPosition = 0;
   selectControl = '';
+  popCarouselSampleArray = [1, 2, 3, 4];
+  popListSampleData = [
+    'Racing car sprays burning fuel into crowd.',
+    'Japanese princess to wed commoner.',
+    'Australian walks 100km after outback crash.',
+    'Man charged over missing wedding girl.',
+    'Los Angeles battles huge wildfires.'
+  ];
+  effect = 'scrollx';
+  popDrawerVisible = false;
+  popModalVisible = false;
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver) { }
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private messageService: NzMessageService,
+    private notificationService: NzNotificationService) { }
 
   ngOnInit() {
     this.nzControls = new Array<{ controls: string[], group: string }>();
@@ -87,7 +100,22 @@ export class FormDesignerComponent implements OnInit {
   }
   controlClick(control) {
     // console.log(popTemplete);
-      this.selectControl = control;
+    this.selectControl = control;
+  }
+  openPopDrawer() {
+    this.popDrawerVisible = !this.popDrawerVisible;
+  }
+  createMessage(type) {
+    this.messageService.create(type, `This is a message of ${type}`);
+  }
+  controlModal() {
+    this.popModalVisible = !this.popModalVisible;
+  }
+  createPopNotification(type) {
+    this.notificationService.create(type,
+      'Notification Title',
+      'This is the content of the notification. This is the content of the notification. This is the content of the notification.'
+    );
   }
 
 }
