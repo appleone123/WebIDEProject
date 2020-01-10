@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 @Component({
@@ -7,16 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./code-page.component.css']
 })
 export class CodePageComponent implements OnInit {
+  @Input() codeLanguage: string;
+  editorTheme = 'vs-dark';
   editorOptions: any;
   code = '';
   originalCode = '';
-  constructor() {
-    this.editorOptions = { theme: 'vs-dark', language: 'javascript' };
+  constructor() {}
+
+  ngOnInit() {
+    this.editorOptions = { theme: this.editorTheme, language: this.codeLanguage };
     this.code = 'function x() {\nconsole.log("Hello world!");\n}';
     this.originalCode = 'function x() { // TODO }';
   }
-
-  ngOnInit() {
+  themeChange(){
+    alert(this.editorTheme);
+    this.editorOptions = { theme: this.editorTheme, language: this.codeLanguage };
   }
 
 }

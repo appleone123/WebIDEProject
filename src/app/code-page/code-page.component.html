@@ -1,1 +1,7 @@
-<ngx-monaco-editor style="height:80em" [options]="editorOptions" [(code)]="code"></ngx-monaco-editor>
+<p>typescript</p>
+<nz-select nzShowSearch nzPlaceHolder="theme" [(ngModel)]="editorTheme" (blur)="themeChange()">
+    <nz-option nzLabel="vs-dark" nzValue="vs-dark"></nz-option>
+    <nz-option nzLabel="vs" nzValue="vs"></nz-option>
+    <nz-option nzLabel="hc-dark" nzValue="hc-dark"></nz-option>
+</nz-select>
+<ngx-monaco-editor style="height:80em" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
