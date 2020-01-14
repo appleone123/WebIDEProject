@@ -29,6 +29,9 @@ export class FormDesignerComponent implements OnInit {
   effect = 'scrollx';
   popDrawerVisible = false;
   popModalVisible = false;
+  editorTheme = 'vs-dark';
+  editorOptionsForCode = { theme: this.editorTheme, language: 'typescript' };
+  editorOptionsForCss = { theme: this.editorTheme, language: 'css' };
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private messageService: NzMessageService,
@@ -117,5 +120,12 @@ export class FormDesignerComponent implements OnInit {
       'This is the content of the notification. This is the content of the notification. This is the content of the notification.'
     );
   }
-
+  themeChange() {
+    this.editorOptionsForCode = { theme: this.editorTheme, language: 'typescript' };
+    this.editorOptionsForCss = { theme: this.editorTheme, language: 'css' };
+  }
+  dragStart(event: DragEvent, control: string) {
+    console.log(control);
+    event.dataTransfer.setData('Text', control);
+  }
 }

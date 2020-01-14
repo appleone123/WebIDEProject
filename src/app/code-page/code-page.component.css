@@ -1,0 +1,12 @@
+.editor-container{
+    width:100%;
+    height: 100%;
+}
+::ng-deep .wrapper{
+    width: 100% !important;
+    height: 100% !important;
+}
+::ng-deep .monaco-editor.showUnused{
+    width: 100% !important;
+    height: 100% !important;
+}

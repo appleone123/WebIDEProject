@@ -7,21 +7,25 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./code-page.component.css']
 })
 export class CodePageComponent implements OnInit {
-  @Input() codeLanguage: string;
-  editorTheme = 'vs-dark';
-  editorOptions: any;
+  @Input() tabType: string;
+  @Input() editorOptions: { theme: string, language: string };
   code = '';
   originalCode = '';
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
-    this.editorOptions = { theme: this.editorTheme, language: this.codeLanguage };
-    this.code = 'function x() {\nconsole.log("Hello world!");\n}';
+    if (!this.editorOptions) {
+      this.editorOptions = { theme: 'vs-dark', language: 'typescript' };
+    }
+    if (this.editorOptions.language === 'typescript' && this.tabType === 'code') {
+      this.code = 'function x() {\n\tconsole.log("Hello world!");\n}';
+    } else if (this.editorOptions.language === 'typescript' && this.tabType === 'service') {
+      this.code = '\nimport { Component, OnInit, Input } from \'@angular/core\';\n'+
+      '\nclass formService{\n\thelloWorldService(){\n\t\treturn \'hello world\';\n\t}\n}';
+    } else {
+      this.code = '';
+    }
     this.originalCode = 'function x() { // TODO }';
-  }
-  themeChange(){
-    alert(this.editorTheme);
-    this.editorOptions = { theme: this.editorTheme, language: this.codeLanguage };
   }
 
 }

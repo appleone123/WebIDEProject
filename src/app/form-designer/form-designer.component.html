@@ -2,12 +2,12 @@
   (mouseup)="mouseUp($event)">
   <nz-sider class="sider" nzTheme="light" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="0"
     [nzZeroTrigger]="zeroTrigger" [nzWidth]="siderWidth+'px'">
-    <ul class="control-list" nz-menu [nzTheme]="'light'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+    <ul class="control-list" cdkDropList nz-menu [nzTheme]="'light'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
       <li *ngFor="let item of nzControls" nz-submenu>
         <span title><i nz-icon type="user"></i><span class="nav-text">{{item.group}}</span></span>
         <ul>
-          <li *ngFor="let control of item.controls" nz-popover nzPlacement="rightBottom" nzTitle="控件示例："
-            [nzContent]="popTemplate" nz-menu-item nzTrigger="click" (click)="controlClick(control)">{{control}}</li>
+          <li *ngFor="let control of item.controls" draggable="true" nz-popover nzPlacement="rightBottom" nzTitle="控件示例："
+            [nzContent]="popTemplate" nz-menu-item nzTrigger="click" (click)="controlClick(control)" (dragstart)="dragStart($event,control)">{{control}}</li>
         </ul>
       </li>
     </ul>
@@ -17,20 +17,27 @@
   <nz-layout class="right-layout">
     <nz-header style="background: #fff; padding-left:10px;font-size: large;">设计器</nz-header>
     <nz-content>
-      <nz-tabset class="tabSet" nzSize="small">
+      <nz-tabset class="tabSet" nzSize="small" [nzTabBarExtraContent]="extraTabTemplate">
         <nz-tab nzTitle="界面">
-          Content of Tab Pane 1
+          <app-design-panel></app-design-panel>
         </nz-tab>
         <nz-tab nzTitle="代码">
-          <app-code-page codeLanguage="typescript"></app-code-page>
+          <app-code-page tabType="code" [editorOptions]="editorOptionsForCode"></app-code-page>
         </nz-tab>
         <nz-tab nzTitle="样式">
-          Content of Tab Pane 3
+          <app-code-page tabType="style" [editorOptions]="editorOptionsForCss"></app-code-page>
         </nz-tab>
         <nz-tab nzTitle="服务">
-          Content of Tab Pane 4
+          <app-code-page tabType="service" [editorOptions]="editorOptionsForCode"></app-code-page>
         </nz-tab>
       </nz-tabset>
+      <ng-template #extraTabTemplate>
+        <nz-select class="themeSelector" nzShowSearch nzPlaceHolder="theme" [(ngModel)]="editorTheme" (ngModelChange)="themeChange()">
+          <nz-option nzLabel="vscode深色主题" nzValue="vs-dark"></nz-option>
+          <nz-option nzLabel="vscode浅色主题" nzValue="vs"></nz-option>
+          <nz-option nzLabel="高对比度主题" nzValue="hc-black"></nz-option>
+      </nz-select>
+      </ng-template>
     </nz-content>
     <nz-footer style="text-align: center;">Elegant Designer ©2019 Implement By Angular</nz-footer>
   </nz-layout>

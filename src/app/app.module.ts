@@ -15,7 +15,8 @@ import { PopControlDirective } from './pop-control.directive';
 import { PopContentComponent } from './pop-content/pop-content.component';
 import { CodePageComponent } from './code-page/code-page.component';
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
-
+import { DesignPanelComponent } from './design-panel/design-panel.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 registerLocaleData(zh);
 
 @NgModule({
@@ -25,7 +26,8 @@ registerLocaleData(zh);
     MainPageComponent,
     PopControlDirective,
     PopContentComponent,
-    CodePageComponent
+    CodePageComponent,
+    DesignPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NzCheckboxModule,
-    MonacoEditorModule
+    MonacoEditorModule,
+    DragDropModule
   ],
   entryComponents: [NzCheckboxComponent, PopContentComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],

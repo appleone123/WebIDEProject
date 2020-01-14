@@ -198,3 +198,23 @@
 .tabSet{
     height: 100%;
 }
+::ng-deep .ant-tabs-content{
+    padding-bottom: 36px;
+    height: 100%;
+}
+::ng-deep .ant-tabs-tabpane.ant-tabs-tabpane-active{
+    height: 100%;
+}
+::ng-deep .ant-tabs-bar.ant-tabs-top-bar{
+    margin-bottom: 0px;
+}
+::ng-deep .ant-tabs-extra-content{
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+.themeSelector{
+    height: 30px;
+    min-width: 90px;
+    margin-right: 10px;
+}
