@@ -21,6 +21,7 @@ export class DesignPanelComponent implements OnInit {
       this.messageService.warning('请先添加布局容器');
     }
     let rootNode = this.renderer.parentNode(container);
+    
     this.renderer.removeChild(rootNode, container);
     let newElement = this.renderer.createElement('button');
     this.renderer.setProperty(newElement, 'nzType', 'primary');
