@@ -1,3 +1,4 @@
-<div class="emptyContainer" #container (drop)="onDrop($event,container)" (dragover)="dragover($event)">
-  <nz-empty nzNotFoundContent="啥也没有哦亲"></nz-empty>
+<div class="emptyContainer" (drop)="onDrop($event,container)" (dragover)="dragover($event)" [innerHTML] = 'htmlData'>
+  <nz-empty #empty #container nzNotFoundContent="啥也没有哦亲"></nz-empty>
+  <button nz-button>保存</button>
 </div>

@@ -3,7 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgZorroAntdModule, NZ_I18N, zh_CN, NzCheckboxModule, NzCheckboxComponent } from 'ng-zorro-antd';
+import {
+  NgZorroAntdModule,
+  NZ_I18N, zh_CN,
+  NzCheckboxModule,
+  NzCheckboxComponent,
+  NzButtonComponent,
+  NzButtonModule
+} from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +48,7 @@ registerLocaleData(zh);
     MonacoEditorModule,
     DragDropModule
   ],
-  entryComponents: [NzCheckboxComponent, PopContentComponent],
+  entryComponents: [NzCheckboxComponent, PopContentComponent, NzButtonComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
 })

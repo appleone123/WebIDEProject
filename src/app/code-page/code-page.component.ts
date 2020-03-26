@@ -20,7 +20,7 @@ export class CodePageComponent implements OnInit {
     if (this.editorOptions.language === 'typescript' && this.tabType === 'code') {
       this.code = 'function x() {\n\tconsole.log("Hello world!");\n}';
     } else if (this.editorOptions.language === 'typescript' && this.tabType === 'service') {
-      this.code = '\nimport { Component, OnInit, Input } from \'@angular/core\';\n'+
+      this.code = '\nimport { Component, OnInit, Input } from \'@angular/core\';\n' +
       '\nclass formService{\n\thelloWorldService(){\n\t\treturn \'hello world\';\n\t}\n}';
     } else {
       this.code = '';
