@@ -27,5 +27,8 @@ export class CodePageComponent implements OnInit {
     }
     this.originalCode = 'function x() { // TODO }';
   }
+  getCode() {
+    return this.code;
+  }
 
 }

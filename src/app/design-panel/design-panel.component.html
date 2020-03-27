@@ -1,4 +1,5 @@
-<div class="emptyContainer" (drop)="onDrop($event,container)" (dragover)="dragover($event)" [innerHTML] = 'htmlData'>
-  <nz-empty #empty #container nzNotFoundContent="啥也没有哦亲"></nz-empty>
-  <button nz-button>保存</button>
+<div class="emptyContainer" (drop)="onDrop($event,container)" tabindex="5" (dragover)="dragover($event)">
+  <nz-empty *ngIf="empty" tabindex="4" #empty nzNotFoundContent="啥也没有哦亲" (focus)="onFocus($event)"></nz-empty>
+  <button #container tabindex="2" nz-button="true" (focus)="onFocus($event)">保存</button>
+  <h1 *ngIf="empty" tabindex="3" (focus)="onFocus($event)">apple</h1>
 </div>

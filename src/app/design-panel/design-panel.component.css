@@ -4,3 +4,8 @@
     height: 100%;
     justify-content: center;
 }
+::ng-deep *:focus{
+    border-style: solid;
+    border: 2px;
+    border-color: black;
+}
