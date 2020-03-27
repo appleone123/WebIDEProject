@@ -7,6 +7,8 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { NzNotificationService, NzMessageService, NzButtonComponent } from 'ng-zorro-antd';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ComponentTypeEnum } from '../components';
+import { ComponentService } from '../component.service';
 
 @Component({
   selector: 'app-design-panel',
@@ -25,7 +27,8 @@ export class DesignPanelComponent implements OnInit {
     private renderer: Renderer2,
     private resolver: ComponentFactoryResolver,
     private sanitizer: DomSanitizer,
-    private overlay: Overlay) { }
+    private overlay: Overlay,
+    private componentService: ComponentService) { }
 
   ngOnInit() {
   }
@@ -35,23 +38,31 @@ export class DesignPanelComponent implements OnInit {
     if (control !== 'Layout布局') {
       this.messageService.warning('请先添加布局容器');
     }
+    switch (control) {
+      case ComponentTypeEnum.Grid:
+        this.componentService.createComponent(ComponentTypeEnum.Grid, event, container);
+        break;
+
+      default:
+        break;
+    }
     // this.container.clear();
     // this.renderer.removeChild(this.container.nativeElement, this.empty.nativeElement);
-    const button = this.renderer.createElement('button');
+    // const button = this.renderer.createElement('button');
     // this.renderer.addClass(button, 'ant-btn');
     // this.renderer.addClass(button, 'ant-btn-default');
     // this.renderer.setProperty(button, 'nz-button', null);
     // this.renderer.appendChild(this.container.nativeElement, button);
-    let rootNode = this.renderer.parentNode(container.el);
+    // let rootNode = this.renderer.parentNode(container.el);
     // this.renderer.removeChild(rootNode, container);
     // let newElement = this.renderer.createElement('button');
     // this.renderer.setProperty(newElement, 'nzType', 'primary');
     // this.renderer.appendChild(newElement, this.renderer.createText('click me'));
-    this.renderer.setAttribute(button, 'nz-button', null);
-    this.renderer.addClass(button, 'ant-btn');
-    this.renderer.addClass(button, 'ant-btn-default');
-    this.renderer.setProperty(button, 'innerHTML', `<span>按钮` + this.maxTabIndex + `</span>`);
-    this.renderer.appendChild(rootNode, button);
+    // this.renderer.setAttribute(button, 'nz-button', null);
+    // this.renderer.addClass(button, 'ant-btn');
+    // this.renderer.addClass(button, 'ant-btn-default');
+    // this.renderer.setProperty(button, 'innerHTML', `<span>按钮` + this.maxTabIndex + `</span>`);
+    // this.renderer.appendChild(rootNode, button);
     // let overRef = this.overlay.create();
     // let component = overRef.attach(new ComponentPortal(NzButtonComponent));
 
