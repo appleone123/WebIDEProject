@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone, TemplateRef, ViewContainerRef, ElementRef, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { NzCheckboxModule, NzCheckboxComponent, NzPopconfirmDirective, NzMessageService, NzNotificationService } from 'ng-zorro-antd';
 import { PopControlDirective } from '../pop-control.directive';
+import { CdkDragStart } from '@angular/cdk/drag-drop';
 import { PopContentComponent } from '../pop-content/pop-content.component';
 @Component({
   selector: 'app-form-designer',
@@ -126,6 +127,7 @@ export class FormDesignerComponent implements OnInit {
   }
   dragStart(event: DragEvent, control: string) {
     console.log(control);
-    event.dataTransfer.setData('Text', control);
+    event.dataTransfer.setData('text', control);
+    event.dataTransfer.dropEffect = 'copy';
   }
 }

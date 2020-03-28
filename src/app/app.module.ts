@@ -24,6 +24,8 @@ import { CodePageComponent } from './code-page/code-page.component';
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 import { DesignPanelComponent } from './design-panel/design-panel.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ComponentService } from './component.service';
+import { ComponentSettingTemplateComponent } from './component-setting-template/component-setting-template.component';
 registerLocaleData(zh);
 
 @NgModule({
@@ -34,7 +36,8 @@ registerLocaleData(zh);
     PopControlDirective,
     PopContentComponent,
     CodePageComponent,
-    DesignPanelComponent
+    DesignPanelComponent,
+    ComponentSettingTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -48,8 +51,8 @@ registerLocaleData(zh);
     MonacoEditorModule,
     DragDropModule
   ],
-  entryComponents: [NzCheckboxComponent, PopContentComponent, NzButtonComponent],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  entryComponents: [NzCheckboxComponent, PopContentComponent, NzButtonComponent, ComponentSettingTemplateComponent],
+  providers: [{ provide: NZ_I18N, useValue: zh_CN }, ComponentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

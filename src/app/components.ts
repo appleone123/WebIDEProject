@@ -1,3 +1,4 @@
+
 export enum ComponentTypeEnum {
     Grid = 'Grid栅格',
     Layout = 'Layout布局',
@@ -10,4 +11,4 @@ export enum ComponentTypeEnum {
     PageHeader = 'PageHeader页头',
     Pagination = 'Pagination分页',
     Steps = 'Steps步骤条'
-};
+}

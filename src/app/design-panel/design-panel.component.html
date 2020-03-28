@@ -1,5 +1,6 @@
-<div class="emptyContainer" (drop)="onDrop($event,container)" tabindex="5" (dragover)="dragover($event)">
-  <nz-empty *ngIf="empty" tabindex="4" #empty nzNotFoundContent="啥也没有哦亲" (focus)="onFocus($event)"></nz-empty>
-  <button #container tabindex="2" nz-button="true" (focus)="onFocus($event)">保存</button>
-  <h1 *ngIf="empty" tabindex="3" (focus)="onFocus($event)">apple</h1>
+<div class="emptyContainer" (drop)="onDrop($event)" tabindex="5" (dragover)="dragover($event)">
+  <nz-empty *ngIf="empty" tabindex="0" #empty nzNotFoundContent="啥也没有哦亲" (focus)="onFocus($event)"></nz-empty>
+  <!-- <button #container tabindex="2" nz-button="true" (focus)="onFocus($event)">保存</button>
+  <h1 *ngIf="empty" tabindex="3" (focus)="onFocus($event)">apple</h1> -->
 </div>
+

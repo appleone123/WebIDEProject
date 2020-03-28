@@ -9,6 +9,7 @@ import { NzNotificationService, NzMessageService, NzButtonComponent } from 'ng-z
 import { DomSanitizer } from '@angular/platform-browser';
 import { ComponentTypeEnum } from '../components';
 import { ComponentService } from '../component.service';
+import { CdkDragEnd, CdkDragStart, CdkDragMove } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-design-panel',
@@ -20,7 +21,6 @@ export class DesignPanelComponent implements OnInit {
   // @ViewChild('empty', { read: ElementRef }) empty: ElementRef;
   // @ViewChild('button', { read: ElementRef }) button: ElementRef;
   htmlData: any;
-  maxTabIndex = 0;
   empty = true;
   constructor(
     private messageService: NzMessageService,
@@ -32,7 +32,7 @@ export class DesignPanelComponent implements OnInit {
 
   ngOnInit() {
   }
-  onDrop(event: DragEvent, container: NzButtonComponent) {
+  onDrop(event: DragEvent) {
     event.preventDefault();
     const control = event.dataTransfer.getData('Text');
     if (control !== 'Layout布局') {
@@ -40,12 +40,13 @@ export class DesignPanelComponent implements OnInit {
     }
     switch (control) {
       case ComponentTypeEnum.Grid:
-        this.componentService.createComponent(ComponentTypeEnum.Grid, event, container);
+        this.componentService.createComponent(ComponentTypeEnum.Grid, event, this.renderer);
         break;
 
       default:
         break;
     }
+    if (this.empty) { this.empty = false; }
     // this.container.clear();
     // this.renderer.removeChild(this.container.nativeElement, this.empty.nativeElement);
     // const button = this.renderer.createElement('button');
@@ -93,10 +94,7 @@ export class DesignPanelComponent implements OnInit {
     // console.log(componentRef);
 
   }
-  onFocus(event: FocusEvent, self) {
-    event.preventDefault();
-    // self.renderer.addClass(event.currentTarget, 'focus');
-  }
+
   onBlur(event: FocusEvent, self) {
     event.preventDefault();
     // self.renderer.removeClass(event.currentTarget, 'focus');
