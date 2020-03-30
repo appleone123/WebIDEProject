@@ -41,6 +41,7 @@ export class DesignPanelComponent implements OnInit {
     switch (control) {
       case ComponentTypeEnum.Grid:
         this.componentService.createComponent(ComponentTypeEnum.Grid, event, this.renderer);
+        // this.settingDrawerVisible = true;
         break;
 
       default:

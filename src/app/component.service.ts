@@ -1,7 +1,9 @@
-import { Injectable, ElementRef, Renderer2 } from '@angular/core';
+import { Injectable, ElementRef, Renderer2, OnInit } from '@angular/core';
 import { ComponentTypeEnum } from './components';
 import { NzMessageService, NzButtonComponent, NzDrawerService, NzDrawerRef } from 'ng-zorro-antd';
-import { ComponentSettingTemplateComponent } from './component-setting-template/component-setting-template.component';
+import { ButtonProperties } from './components-properties/buttonProperties';
+import { ButtonSettingComponent } from './component-settingTemplate/button-setting/button-setting.component';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +11,19 @@ import { ComponentSettingTemplateComponent } from './component-setting-template/
 export class ComponentService {
   constructor(
     private messageService: NzMessageService,
-    private drawerService: NzDrawerService) { }
+    private drawerService: NzDrawerService) {
+    this.componentTree = { root: new Array<any>() };
+  }
+
   private maxTabIndex = 0;
   private settingPanelOpenStatus = false;
   private settingPanelRef: NzDrawerRef;
+  private componentTree: { root: any[] };
+
+  getComponentTree() {
+    return this.componentTree;
+  }
+
   createComponent(type: ComponentTypeEnum, event: DragEvent, renderer: Renderer2) {
     switch (type) {
       case ComponentTypeEnum.Grid:
@@ -29,9 +40,28 @@ export class ComponentService {
     renderer.listen(button, 'click', ($event) => { this.onClick($event, this, button); });
     renderer.addClass(button, 'ant-btn');
     renderer.addClass(button, 'ant-btn-default');
-    renderer.setProperty(button, 'innerHTML', `<span>按钮0</span>`);
+    renderer.setProperty(button, 'innerHTML', `<span>` + 'button' + this.maxTabIndex + `</span>`);
     renderer.appendChild(event.currentTarget, button);
     this.maxTabIndex = this.maxTabIndex + 1;
+    const buttonProps = new ButtonProperties();
+    buttonProps.id = 'button' + this.maxTabIndex;
+    buttonProps.className = 'ant-btn ant-btn-default';
+    buttonProps.icon = null;
+    buttonProps.event = null;
+    buttonProps.content = `<span>` + 'button' + this.maxTabIndex + `</span>`;
+    buttonProps.nzBlock = false;
+    buttonProps.nzGhost = false;
+    buttonProps.nzLoading = false;
+    buttonProps.nzShape = 'circle';
+    buttonProps.nzSize = 'default';
+    buttonProps.nzType = 'default';
+    buttonProps.visibility = true;
+    this.componentTree.root.push(buttonProps);
+  }
+
+  private onCancel() {
+    alert('aaa');
+    return of(true).toPromise();
   }
 
   private onClick(event: Event, self, element) {
@@ -42,11 +72,13 @@ export class ComponentService {
     // self.renderer.addClass(event.currentTarget, 'focus');
     const settingPanelRef = self.drawerService.create({
       nzTitle: '属性设置',
-      nzContent: ComponentSettingTemplateComponent,
-      nzContentParams: { type: ComponentTypeEnum.Button, props: { id: element.id } }
+      nzContent: ButtonSettingComponent,
+      nzOnCancel: this.onCancel,
+      nzContentParams: { type: ComponentTypeEnum.Button, settingInfo: self.componentTree.root[0] }
     });
     // const currentTarget = event.currentTarget;
     settingPanelRef.afterClose.subscribe((data) => {
+
       // self.settingPanelOpenStatus = false;
       // const focusEvent = new FocusEvent('blur');
       // const result = currentTarget.dispatchEvent(focusEvent);
