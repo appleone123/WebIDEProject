@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ButtonProperties } from 'src/app/components-properties/buttonProperties';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzDrawerRef } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-button-setting',
@@ -11,7 +12,7 @@ export class ButtonSettingComponent implements OnInit {
   @Input() settingInfo: ButtonProperties;
   ButtonSettingGroup: FormGroup;
   @Input() type: string;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private drawerRef: NzDrawerRef) { }
 
   ngOnInit() {
     this.ButtonSettingGroup = this.formBuilder.group({
@@ -25,6 +26,13 @@ export class ButtonSettingComponent implements OnInit {
   }
   getData() {
     return this.ButtonSettingGroup.value;
+  }
+  confirm() {
+    if (this.ButtonSettingGroup.status === 'VALID') {
+      this.drawerRef.close();
+    } else {
+
+    }
   }
 
 }

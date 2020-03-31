@@ -1,0 +1,35 @@
+.bottomButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0px;
+    width: 100%;
+    background-color: white;
+}
+.form{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+::ng-deep .ant-drawer-wrapper-body{
+    overflow: hidden !important;
+}
+::ng-deep .ant-drawer-body{
+    height: 100%;
+    padding:0px;
+}
+.settingDrawer{
+    height: 100%;
+}
+.ant-form{
+    padding: 5px;
+}
+h2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+nz-divider{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

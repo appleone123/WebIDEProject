@@ -218,3 +218,6 @@
     min-width: 90px;
     margin-right: 10px;
 }
+.settingDrawer{
+    overflow-y: hidden;
+}

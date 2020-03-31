@@ -1,33 +1,104 @@
-<form nz-form [formGroup]="ButtonSettingGroup" (ngSubmit)="_submitForm(event, groupName.value)" nzLayout="vertical">
-  <nz-form-item>
-    <nz-form-label nzRequired="true">ID</nz-form-label>
-    <nz-form-control nzRequired >
-      <input nz-input id="controlid" formControlName="controlid" placeholder="">
-    </nz-form-control>
-  </nz-form-item>
-  <!-- <nz-form-item>
-    <nz-form-label >Class</nz-form-label>
-    <nz-form-control>
-      <input nz-input id="controlclass" formControlName="controlclass" placeholder="">
-    </nz-form-control>
-  </nz-form-item> -->
-  <nz-form-item>
-    <nz-form-label >nzType</nz-form-label>
-    <nz-form-control>
-      <nz-select formControlName="buttonType" nzAllowClear>
-        <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
-        <nz-option nzLabel="round" nzValue="round">round</nz-option>
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label >nzLoading</nz-form-label>
-    <nz-form-control>
-      <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
-        <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
-        <nz-option nzLabel="round" nzValue="round">round</nz-option>
-        <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
-      </nz-select>
-    </nz-form-control>
-  </nz-form-item>
-</form>
+<div class="settingDrawer">
+  <div>
+    <h2>属性设置</h2>
+    <nz-divider></nz-divider>
+  </div>
+  <div class="form">
+    <form nz-form [formGroup]="ButtonSettingGroup" (ngSubmit)="_submitForm(event, groupName.value)" nzLayout="vertical">
+      <nz-form-item>
+        <nz-form-label nzRequired="true">ID</nz-form-label>
+        <nz-form-control nzRequired>
+          <input nz-input id="controlid" formControlName="controlid" placeholder="">
+        </nz-form-control>
+      </nz-form-item>
+      <!-- <nz-form-item>
+        <nz-form-label >Class</nz-form-label>
+        <nz-form-control>
+          <input nz-input id="controlclass" formControlName="controlclass" placeholder="">
+        </nz-form-control>
+      </nz-form-item> -->
+      <nz-form-item>
+        <nz-form-label>nzType</nz-form-label>
+        <nz-form-control>
+          <nz-select formControlName="buttonType" nzAllowClear>
+            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
+            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>nzLoading</nz-form-label>
+        <nz-form-control>
+          <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
+            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
+            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+            <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>nzLoading</nz-form-label>
+        <nz-form-control>
+          <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
+            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
+            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+            <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>nzLoading</nz-form-label>
+        <nz-form-control>
+          <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
+            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
+            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+            <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>nzLoading</nz-form-label>
+        <nz-form-control>
+          <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
+            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
+            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+            <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>nzLoading</nz-form-label>
+        <nz-form-control>
+          <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
+            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
+            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+            <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>nzLoading</nz-form-label>
+        <nz-form-control>
+          <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
+            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
+            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+            <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label>nzLoading</nz-form-label>
+        <nz-form-control>
+          <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
+            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
+            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+            <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+  <div class="bottomButton">
+    <button class="confirmButton" nz-button nzType="primary" type="submit" (click)="confirm($event)">确定</button>
+  </div>
+</div>

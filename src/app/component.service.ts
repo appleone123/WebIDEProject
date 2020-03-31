@@ -71,9 +71,12 @@ export class ComponentService {
     event.preventDefault();
     // self.renderer.addClass(event.currentTarget, 'focus');
     const settingPanelRef = self.drawerService.create({
-      nzTitle: '属性设置',
+      // nzTitle: '属性设置',
       nzContent: ButtonSettingComponent,
       nzOnCancel: this.onCancel,
+      nzClosable: false,
+      nzMaskClosable: false,
+      nzWrapClassName: 'settingDrawer',
       nzContentParams: { type: ComponentTypeEnum.Button, settingInfo: self.componentTree.root[0] }
     });
     // const currentTarget = event.currentTarget;
