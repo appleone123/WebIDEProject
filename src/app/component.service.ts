@@ -52,7 +52,7 @@ export class ComponentService {
     buttonProps.nzBlock = false;
     buttonProps.nzGhost = false;
     buttonProps.nzLoading = false;
-    buttonProps.nzShape = 'circle';
+    buttonProps.nzShape = 'default';
     buttonProps.nzSize = 'default';
     buttonProps.nzType = 'default';
     buttonProps.visibility = true;
@@ -89,5 +89,8 @@ export class ComponentService {
     });
     // self.settingPanelOpenStatus = true;
     // }
+  }
+  ngModelChange(event) {
+    console.log(event);
   }
 }

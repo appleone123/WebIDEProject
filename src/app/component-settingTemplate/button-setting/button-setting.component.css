@@ -6,9 +6,14 @@
     width: 100%;
     background-color: white;
 }
+.confirmButton{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
 .form{
     overflow-y: auto;
     overflow-x: hidden;
+    width: 100%;
 }
 ::ng-deep .ant-drawer-wrapper-body{
     overflow: hidden !important;
@@ -18,7 +23,13 @@
     padding:0px;
 }
 .settingDrawer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
+}
+.header{
+    width: 100%;
 }
 .ant-form{
     padding: 5px;
@@ -32,4 +43,7 @@ h2{
 nz-divider{
     margin-top: 0px;
     margin-bottom: 0px;
+}
+input[nz-input]{
+    line-height: 10;
 }

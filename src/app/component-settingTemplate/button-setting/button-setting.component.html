@@ -1,5 +1,5 @@
 <div class="settingDrawer">
-  <div>
+  <div class="header">
     <h2>属性设置</h2>
     <nz-divider></nz-divider>
   </div>
@@ -23,17 +23,21 @@
           <nz-select formControlName="buttonType" nzAllowClear>
             <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
             <nz-option nzLabel="round" nzValue="round">round</nz-option>
+            <nz-option nzLabel="default" nzValue="default">default</nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
-        <nz-form-label>nzLoading</nz-form-label>
+        <nz-form-label class="{display:inline}">nzLoading
+          <label nz-checkbox [(ngModel)]="loadingCheck" [ngModelOptions]="{standalone: true}"></label>
+        </nz-form-label>
         <nz-form-control>
-          <nz-select nzShowSearch formControlName="buttonType" nzAllowClear>
-            <nz-option nzLabel="circle" nzValue="circle">circle</nz-option>
-            <nz-option nzLabel="round" nzValue="round">round</nz-option>
+          <nz-select *ngIf="loadingCheck" nzShowSearch formControlName="buttonLoading" nzAllowClear>
+            <nz-option nzLabel="true" nzValue="true">true</nz-option>
+            <nz-option nzLabel="false" nzValue="false">false</nz-option>
             <!-- <nz-option nzLabel="round" nzValue="round">round</nz-option> -->
           </nz-select>
+          <input *ngIf="!loadingCheck" nz-input formControlName="buttonLoading" placeholder="">
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>

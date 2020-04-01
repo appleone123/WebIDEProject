@@ -32,15 +32,15 @@ export class MainPageComponent implements OnInit {
     switch (this.selectedFormType) {
       case 'List':
         console.log('navigate');
-        this.router.navigate(['designer']);
+        this.router.navigate(['designer', 'List'], { skipLocationChange: true });
         break;
       case 'ListCard':
         console.log('navigate');
-        this.router.navigate(['designer']);
+        this.router.navigate(['designer', 'ListCard'], { skipLocationChange: true });
         break;
       case 'Card':
         console.log('navigate');
-        this.router.navigate(['designer']);
+        this.router.navigate(['designer', 'card'], { skipLocationChange: true });
         break;
       default:
         break;

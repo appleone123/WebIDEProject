@@ -3,6 +3,7 @@ import { NzCheckboxModule, NzCheckboxComponent, NzPopconfirmDirective, NzMessage
 import { PopControlDirective } from '../pop-control.directive';
 import { CdkDragStart } from '@angular/cdk/drag-drop';
 import { PopContentComponent } from '../pop-content/pop-content.component';
+import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-form-designer',
   templateUrl: './form-designer.component.html',
@@ -30,15 +31,19 @@ export class FormDesignerComponent implements OnInit {
   effect = 'scrollx';
   popDrawerVisible = false;
   popModalVisible = false;
+  formType: string;
   editorTheme = 'vs-dark';
   editorOptionsForCode = { theme: this.editorTheme, language: 'typescript' };
   editorOptionsForCss = { theme: this.editorTheme, language: 'css' };
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private messageService: NzMessageService,
-    private notificationService: NzNotificationService) { }
+    private notificationService: NzNotificationService,
+    private routeInfo: ActivatedRoute) { }
 
   ngOnInit() {
+    this.formType = this.routeInfo.snapshot.params['type'];
+    console.log(this.formType);
     this.nzControls = new Array<{ controls: string[], group: string }>();
     this.nzControls.push({
       controls: ['Grid栅格', 'Layout布局'],
@@ -77,7 +82,9 @@ export class FormDesignerComponent implements OnInit {
       group: '其他'
     });
 
+
   }
+
   mouseDown(event: MouseEvent) {
     if (event.button === 0) {
       this.isMouseDown = true;
